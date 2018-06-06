@@ -1,0 +1,12 @@
+{
+    "name": "02-web-server-demo",
+    "version": "1.0.0",
+    "description": "Web Server and Development Tools",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js"
+    },
+    "keywords": [],
+    "author": "AS",
+    "license": "ISC"
+}
