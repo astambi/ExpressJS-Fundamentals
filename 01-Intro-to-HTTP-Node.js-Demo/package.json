@@ -1,0 +1,12 @@
+{
+    "name": "01-introduction-to-http-and-node.js-demo",
+    "version": "1.0.0",
+    "description": "Introduction to HTTP and Node.js",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js"
+    },
+    "keywords": [],
+    "author": "AS",
+    "license": "ISC"
+}

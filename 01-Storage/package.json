@@ -1,0 +1,12 @@
+{
+    "name": "01-storage",
+    "version": "1.0.0",
+    "description": "Exercise: Introduction to HTTP and Node.js",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js"
+    },
+    "keywords": [],
+    "author": "AS",
+    "license": "ISC"
+}
