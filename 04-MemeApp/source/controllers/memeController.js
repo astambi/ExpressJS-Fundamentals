@@ -15,8 +15,10 @@ const placeholderTemplates = require("../infrastructure/placeholderTemplates");
 // View paths
 const viewAddGenrePath = "./source/views/addGenre.html";
 const viewAddMemePath = "./source/views/addMeme.html";
-const viewDetailsPath = "./source/views/details.html";
+const viewMemeDetailsPath = "./source/views/details.html";
+const viewGenreDetailsPath = "./source/views/detailsGenre.html";
 const viewAllMemesPath = "./source/views/viewAll.html";
+const viewAllGenresPath = "./source/views/viewAllGenres.html";
 
 // Notifications
 const statusSuccess = "success";
@@ -49,6 +51,7 @@ let fieldChecker = obj => {
     }
 };
 
+// Memes
 let memesAll = (req, res) => {
     memeService.getAll().then(data => {
         fs.readFile(viewAllMemesPath, (err, html) => {
@@ -88,7 +91,7 @@ let memeDetails = (req, res) => {
                 return;
             }
 
-            fs.readFile(viewDetailsPath, (err, data) => {
+            fs.readFile(viewMemeDetailsPath, (err, data) => {
                 // Read View
                 if (err) {
                     console.log(err);
@@ -221,6 +224,58 @@ let createMeme = (req, res) => {
     });
 };
 
+let deleteMeme = (req, res) => {
+    let memeId = req.params.id;
+    memeService
+        .delete(memeId)
+        .then(() => {
+            res.redirect("/memes/viewAllMemes");
+        })
+        .catch(err => {
+            res.redirect(`/memes/${memeId}`);
+        });
+};
+
+// Genres
+let genresAll = (req, res) => {
+    genreService.getAll().then(data => {
+        fs.readFile(viewAllGenresPath, (err, html) => {
+            // Read View
+            if (err) {
+                console.log(err);
+                return;
+            }
+
+            // Update View
+            data.sort((a, b) => {
+                a = a.title.toLowerCase();
+                b = b.title.toLowerCase();
+                if (a < b) {
+                    return -1;
+                }
+                if (a > b) {
+                    return 1;
+                }
+                return 0;
+            });
+
+            let genresContent = "";
+            for (let genre of data) {
+                genresContent += memeTemplates.viewAllGenres(
+                    genre._id,
+                    genre.title
+                );
+            }
+
+            html = html
+                .toString()
+                .replace(placeholderTemplates.placeholder, genresContent);
+
+            res.send(html);
+        });
+    });
+};
+
 let addGenreView = (req, res, status = null) => {
     fs.readFile(viewAddGenrePath, (err, data) => {
         // Read View
@@ -284,24 +339,13 @@ let createGenre = (req, res) => {
         });
 };
 
-let deleteMeme = (req, res) => {
-    let memeId = req.params.id;
-    memeService
-        .delete(memeId)
-        .then(() => {
-            res.redirect("/memes/viewAllMemes");
-        })
-        .catch(err => {
-            res.redirect(`/memes/${memeId}`);
-        });
-};
-
 router
     .get("/viewAllMemes", (req, res) => memesAll(req, res))
-    .get("/addGenre", (req, res) => addGenreView(req, res))
-    .post("/addGenre", (req, res) => createGenre(req, res))
+    .get("/viewAllGenres", (req, res) => genresAll(req, res))
     .get("/addMeme", (req, res) => addMemeView(req, res))
     .post("/addMeme", (req, res) => createMeme(req, res))
+    .get("/addGenre", (req, res) => addGenreView(req, res))
+    .post("/addGenre", (req, res) => createGenre(req, res))
     .get("/delete/:id", (req, res) => deleteMeme(req, res))
     .get("/:id", (req, res) => memeDetails(req, res)); // memes/{id}
 

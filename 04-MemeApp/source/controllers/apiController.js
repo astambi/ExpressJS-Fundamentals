@@ -219,6 +219,4 @@ router
     .get("/genres/", (req, res) => getAllGenres(req, res))
     .post("/genres/", (req, res) => saveGenre(req, res));
 
-// TODO delete all, update
-
 module.exports = router;

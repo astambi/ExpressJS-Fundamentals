@@ -18,7 +18,7 @@ header {
     padding: 0px 20px;
     position: relative;
 }
-.logo{
+.logo {
     max-width: 140px;
     margin-top: -20px;
 }
@@ -27,7 +27,7 @@ h1 {
     text-align: center;
     width: 100%;
     margin-top: 120px;
-    color:greenyellow;
+    color: greenyellow;
     font-weight: 800;
     font-size: 40px;
 }
@@ -96,13 +96,13 @@ label {
         top: 0px;
     }
     label:after {
-        content: '';
+        content: "";
         display: block;
         width: 30px;
         height: 5px;
         background: #777;
         margin: 7px 5px;
-        box-shadow: 0px 10px 0px #777, 0px 20px 0px #777
+        box-shadow: 0px 10px 0px #777, 0px 20px 0px #777;
     }
     [type="checkbox"]:checked ~ ul {
         display: block;
@@ -141,27 +141,27 @@ label {
     }
 }
 
-
 /* submit form css */
 
 #status {
     display: inline !important;
 }
 
-input[type=text], select, textarea {
-    width: 100%; 
-    padding: 12px; 
-    border: 1px solid #ccc; 
-    border-radius: 4px; 
-    box-sizing: border-box; 
-    margin-top: 6px; 
-    margin-bottom: 16px; 
-    resize: vertical ;
+input[type="text"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
 }
 
-
-input[type=submit] {
-    background-color: #4CAF50;
+input[type="submit"] {
+    background-color: #4caf50;
     color: white;
     padding: 12px 20px;
     border: none;
@@ -169,11 +169,9 @@ input[type=submit] {
     cursor: pointer;
 }
 
-
-input[type=submit]:hover {
+input[type="submit"]:hover {
     background-color: #45a049;
 }
-
 
 .container {
     border-radius: 5px;
@@ -183,25 +181,25 @@ input[type=submit]:hover {
 
 /* error container */
 
-#replaceMe{
-    font-size:0px;
-    line-height:0;
-    margin:0;
-    padding:0;
-    height:0;
+#replaceMe {
+    font-size: 0px;
+    line-height: 0;
+    margin: 0;
+    padding: 0;
+    height: 0;
 }
 
 /* error message */
-#errBox{
+#errBox {
     min-width: 100%;
     text-align: center;
     background-color: pink;
     border-radius: 4px;
-    padding-top:5px;
-    padding-bot:5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
-#errMsg{
+#errMsg {
     display: inline-block;
     color: orange;
     font-size: 25px;
@@ -209,40 +207,38 @@ input[type=submit]:hover {
 
 /* succsses message */
 
-#succssesBox{
-   min-width: 100%;
+#succssesBox {
+    min-width: 100%;
     text-align: center;
     background-color: green;
     border-radius: 4px;
-    padding-top:5px;
-    padding-bot:5px;
-    
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
-#succssesMsg{
+#succssesMsg {
     display: inline-block;
     color: orange;
-    font-size: 25px
+    font-size: 25px;
 }
 
 /* memes view all */
 
-.meme{
+.meme {
     border: solid 1px greenyellow;
-    display:inline-block;
+    display: inline-block;
     max-width: 30%;
     padding: 1%;
     margin: 1%;
     border-radius: 4px;
-    
 }
 
-.memePoster{
+.memePoster {
     display: inline-block;
-    max-width: 100%; 
+    max-width: 100%;
 }
 
-.memePoster:hover{
+.memePoster:hover {
     border: solid 1px deepskyblue;
     border-radius: 4px;
 }
@@ -255,10 +251,14 @@ input[type=submit]:hover {
     border: 2px solid greenyellow;
     padding: 20px;
     overflow: hidden;
-   
 }
 
 .content img {
     margin-right: 15px;
     float: left;
+}
+
+.genre {
+    font-weight: 900;
+    padding: 15px;
 }
