@@ -1,0 +1,72 @@
+$color-primary: whitesmoke;
+$color-background-primary: grey;
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    a {
+        font-weight: bold;
+        text-decoration: none;
+        text-transform: uppercase;
+        padding: 0 10px;
+    }
+}
+
+.menu {
+    background-color: $color-background-primary;
+    ul {
+        display: flex;
+        justify-content: space-around;
+        list-style-type: none;
+        margin: 0;
+        li {
+            padding: 20px;
+            a {
+                color: $color-primary;
+            }
+        }
+    }
+}
+
+main .container {
+    text-align: center;
+    .links {
+        padding: 20px;
+    }
+    .form {
+        text-align: justify;
+        padding: 20px;
+        div {
+            padding: 5px;
+        }
+    }
+    .books-container {
+        padding: 30px;
+        .book {
+            padding: 5px;
+        }
+    }
+    .error,
+    .success {
+        padding: 10px;
+    }
+    .error {
+        color: rgb(245, 141, 176);
+    }
+
+    .success {
+        color: palegreen;
+    }
+}
+
+footer {
+    color: $color-primary;
+    background-color: $color-background-primary;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 20px;
+}

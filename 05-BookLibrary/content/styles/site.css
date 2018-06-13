@@ -1,0 +1,81 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+body a {
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 0 10px;
+}
+
+.menu {
+  background-color: grey;
+}
+
+.menu ul {
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+  margin: 0;
+}
+
+.menu ul li {
+  padding: 20px;
+}
+
+.menu ul li a {
+  color: whitesmoke;
+}
+
+main .container {
+  text-align: center;
+}
+
+main .container .links {
+  padding: 20px;
+}
+
+main .container .form {
+  text-align: justify;
+  padding: 20px;
+}
+
+main .container .form div {
+  padding: 5px;
+}
+
+main .container .books-container {
+  padding: 30px;
+}
+
+main .container .books-container .book {
+  padding: 5px;
+}
+
+main .container .error,
+main .container .success {
+  padding: 10px;
+}
+
+main .container .error {
+  color: #f58db0;
+}
+
+main .container .success {
+  color: palegreen;
+}
+
+footer {
+  color: whitesmoke;
+  background-color: grey;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 20px;
+}
+/*# sourceMappingURL=site.css.map */
