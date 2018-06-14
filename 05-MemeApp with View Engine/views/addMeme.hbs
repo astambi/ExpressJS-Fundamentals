@@ -1,0 +1,28 @@
+<h1>Add New Movie</h1>
+
+<div class="container">
+    <form method="POST" action="/memes/addMeme" enctype=multipart/form-data>
+        <label for="movieTitle">Title</label>
+        <input type="text" id="movieTitle" name="memeTitle" placeholder="The title of the movie">
+
+        <select name='genreSelect' id="genreSelect">
+            {{#each genres}}
+            <option value="{{id}}">{{title}}</option>
+            {{/each}}
+        </select>
+
+        <label for=" oviePoster">Poster URL</label>
+        <input type="file" id="moviePoster" name="meme" placeholder="Link to a poster">
+
+        <input type="checkbox" name="status" id="status" checked> public
+
+        <label for="movieDescription">Movie description</label>
+        <textarea id="movieDescription" name="memeDescription" placeholder="Movie description" rows="10" cols="10"></textarea>
+
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+<div>
+    <h2 id="msg">{{status}}</h2>
+</div>

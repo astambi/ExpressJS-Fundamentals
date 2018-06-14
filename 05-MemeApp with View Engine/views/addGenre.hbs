@@ -1,0 +1,14 @@
+<h1>Add New Genre</h1>
+
+<div class="container">
+    <form method="POST" action="/memes/addGenre">
+        <label for="genreTitle">Title</label>
+        <input type="text" id="genreTitle" name="genreTitle" placeholder="The title of the genre">
+
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+<div>
+    <h2 id="msg">{{status}}</h2>
+</div>
