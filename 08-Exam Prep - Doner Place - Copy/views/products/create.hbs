@@ -1,0 +1,28 @@
+<form method="post">
+    <h2>Create Product</h2>
+
+    <div>
+        <label for="category">Category</label>
+        <select name="category" id="category">
+            <option value="beef">Beef</option>
+            <option value="chicken">Chicken</option>
+            <option value="lamb">Lamb</option>
+        </select>
+    </div>
+    <div>
+        <label for="imageUrl">Image Url</label>
+        <input id="imageUrl" name="imageUrl" type="text" value="{{formData.ImageUrl}}">
+    </div>
+    <div>
+        <label for="size">Size</label>
+        <input required id="size" name="size" type="number" min="17" max="24" value="{{formData.size}}">
+    </div>
+    <div>
+        <strong>Toppings</strong>
+        <br>
+        <textarea name="toppings">{{formData.toppings}}</textarea>
+    </div>
+    <div>
+        <input type="submit" value="Create" class="button" style="border:0" />
+    </div>
+</form>

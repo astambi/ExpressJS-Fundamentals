@@ -1,0 +1,16 @@
+{
+    "name": "03-persistence-files-mongodb",
+    "version": "1.0.0",
+    "description": "Persistence - Files and MongoDB",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js"
+    },
+    "keywords": [],
+    "author": "AS",
+    "license": "ISC",
+    "dependencies": {
+        "formidable": "^1.2.1",
+        "mongoose": "^5.1.4"
+    }
+}
