@@ -60,13 +60,13 @@ module.exports = {
             orders
         });
     },
-    manageStatusPost: (req, res) => {
+    manageStatusPost: async (req, res) => {
         // id: status
         const data = req.body;
 
         try {
             for (const id in data) {
-                orderService.updateStatus(id, data[id]);
+                await orderService.updateStatus(id, data[id]);
             }
 
             res.redirect("/");
