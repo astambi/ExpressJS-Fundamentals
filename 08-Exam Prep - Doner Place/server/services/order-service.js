@@ -1,16 +1,10 @@
 const Order = require("mongoose").model("Order");
-
-const allowedToppings = [
-    "pickle",
-    "tomato",
-    "onion",
-    "lettuce",
-    "hot sauce",
-    "extra sauce"
-];
+const Product = require("mongoose").model("Product");
 
 async function create(data) {
     const { creatorId, productId } = data;
+
+    const allowedToppings = new Product().allowedToppings; // virtual prop
 
     let toppings = [];
     for (const key in data) {
@@ -40,10 +34,10 @@ async function getAll() {
     return await Order.find({}).populate("productId");
 }
 
-function updateStatus(id, newStatus) {
-    Order.findByIdAndUpdate(id, {
+async function updateStatus(id, newStatus) {
+    await Order.findByIdAndUpdate(id, {
         $set: { status: newStatus }
-    }).exec();
+    });
 }
 
 module.exports = {

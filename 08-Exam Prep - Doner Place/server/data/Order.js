@@ -34,6 +34,25 @@ const orderSchema = new mongoose.Schema({
     }
 });
 
+// Virtual property for Order Details & Status
+orderSchema.virtual("orderShortDate").get(function() {
+    return this.orderDate.toString().substr(0, 21);
+});
+
+// Virtual properties for Admin form ManageOrderStatus -> select options
+orderSchema.virtual("statusPending").get(function() {
+    return this.status === "Pending";
+});
+orderSchema.virtual("statusInProgress").get(function() {
+    return this.status === "In Progress";
+});
+orderSchema.virtual("statusInTransit").get(function() {
+    return this.status === "In Transit";
+});
+orderSchema.virtual("statusDelivered").get(function() {
+    return this.status === "Delivered";
+});
+
 const Order = mongoose.model("Order", orderSchema);
 
 module.exports = Order;

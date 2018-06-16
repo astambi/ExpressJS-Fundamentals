@@ -1,22 +1,15 @@
 const Product = require("mongoose").model("Product");
 
-const allowedToppings = [
-    "pickle",
-    "tomato",
-    "onion",
-    "lettuce",
-    "hot sauce",
-    "extra sauce"
-];
-
 async function create(data) {
     const { category, size, imageUrl } = data;
+
+    const allowedToppings = new Product().allowedToppings; // virtual prop
 
     const toppings = data.toppings
         .split(",")
         .map(e => e.trim())
         .filter(e => e.length > 0)
-        .filter(e => allowedToppings.includes(e)); // validation
+        .filter(e => allowedToppings.includes(e)); // filter valid data only
 
     return await Product.create({
         category,
@@ -43,22 +36,11 @@ async function getById(id) {
         throw new Error(`Product not found: #${id}`);
     }
 
-    let categoryName = product.category;
-    categoryName = categoryName.charAt(0).toUpperCase() + categoryName.slice(1);
-
-    product.productName = `${categoryName} doner, ${product.size}cm`;
-
     return product;
-}
-
-function getName(category, size) {
-    let categoryUpper = category[0].toUpperCase() + category.slice(1);
-    return `${categoryUpper} doner, ${size}cm`;
 }
 
 module.exports = {
     create,
     getAll,
-    getById,
-    getName
+    getById
 };

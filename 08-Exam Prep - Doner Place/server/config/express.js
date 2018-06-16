@@ -43,7 +43,7 @@ module.exports = app => {
             // Attach User
             res.locals.currentUser = req.user;
 
-            // Attach Admin indication
+            // Attach Admin flag
             if (req.user.roles.includes("Admin")) {
                 res.locals.isAdmin = true;
             }

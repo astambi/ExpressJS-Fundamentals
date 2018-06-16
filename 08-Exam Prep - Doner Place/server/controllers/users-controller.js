@@ -23,16 +23,22 @@ module.exports = {
             lastName: reqUser.lastName,
             salt: salt,
             hashedPass: hashedPassword
-        }).then(user => {
-            req.logIn(user, (err, user) => {
-                if (err) {
-                    res.locals.globalError = err;
-                    res.render("users/register", user);
-                }
+        })
+            .then(user => {
+                req.logIn(user, (err, user) => {
+                    if (err) {
+                        res.locals.globalError = err;
+                        res.render("users/register", user);
+                    }
 
-                res.redirect("/");
+                    res.redirect("/");
+                });
+            })
+            .catch(err => {
+                console.log(err);
+                res.locals.globalError = "Username is taken";
+                res.render("users/register");
             });
-        });
     },
     loginGet: (req, res) => {
         res.render("users/login");

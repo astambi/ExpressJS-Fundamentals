@@ -1,10 +1,6 @@
 const productService = require("../services/product-service");
 const orderService = require("../services/order-service");
 
-function toShortDate(date) {
-    return date.toString().substr(0, 21);
-}
-
 module.exports = {
     createGet: async (req, res) => {
         const id = req.params.id;
@@ -19,7 +15,6 @@ module.exports = {
 
         try {
             const order = await orderService.create(data);
-
             res.redirect(`/orders/details/${order._id}`);
         } catch (err) {
             console.log(err);
@@ -34,13 +29,9 @@ module.exports = {
         // Get orders with Product details
         const orders = await orderService.getByUserId(userId);
 
-        // Create custome properties => Map by primary key!
+        // Create custom properties => Map by primary key!
         orders.map(o => {
-            (o.productName = productService.getName(
-                o.productId.category,
-                o.productId.size
-            )),
-                (o.orderShortDate = toShortDate(o.orderDate));
+            o.productName = o.productId.productName; // virtual prop
         });
 
         res.render("orders/status", {
@@ -51,18 +42,8 @@ module.exports = {
         const orderId = req.params.id;
         const order = await orderService.getById(orderId);
 
-        order.productName = productService.getName(
-            order.productId.category,
-            order.productId.size
-        );
-
-        order.orderShortDate = toShortDate(order.orderDate);
+        order.productName = order.productId.productName; // virtual prop
         order.imageUrl = order.productId.imageUrl;
-
-        order.statusPending = order.status === "Pending";
-        order.statusInProgress = order.status === "In progress";
-        order.statusInTransit = order.status === "In transit";
-        order.statusDelivered = order.status === "Delivered";
 
         res.render("orders/details", order);
     },
@@ -72,15 +53,7 @@ module.exports = {
 
         // Create custome properties => Map by primary key!
         orders.map(o => {
-            (o.productName = productService.getName(
-                o.productId.category,
-                o.productId.size
-            )),
-                (o.orderShortDate = toShortDate(o.orderDate)),
-                (o.statusPending = o.status === "Pending"),
-                (o.statusInProgress = o.status === "In Progress"),
-                (o.statusInTransit = o.status === "In Transit"),
-                (o.statusDelivered = o.status === "Delivered");
+            o.productName = o.productId.productName; // virtual prop
         });
 
         res.render("orders/all", {
@@ -93,7 +66,6 @@ module.exports = {
 
         try {
             for (const id in data) {
-                
                 orderService.updateStatus(id, data[id]);
             }
 

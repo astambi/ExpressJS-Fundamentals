@@ -50,12 +50,12 @@ module.exports = app => {
     );
     app.get(
         "/orders/all",
-        auth.isInRole("Admin"), // Admin
+        auth.isInRole(roleAdmin), // Admin
         controllers.orders.allGet
     );
     app.post(
         "/orders/manage",
-        auth.isInRole("Admin"), // Admin
+        auth.isInRole(roleAdmin), // Admin
         controllers.orders.manageStatusPost
     );
 
