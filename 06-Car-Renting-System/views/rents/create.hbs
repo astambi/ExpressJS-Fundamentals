@@ -1,0 +1,22 @@
+<h1>Rent a car</h1>
+
+<div class="car-container">
+    <section>
+        <a href="/cars/edit/{{_id}}">
+            <img src="{{imageUrl}}" alt='car-image' />
+        </a>
+    </section>
+    <section class="info">
+        <strong>{{model}}: ${{price}}</strong>
+    </section>
+</div>
+
+<div>
+
+    <form method="post" action="/rents/create">
+        <input type="hidden" name="id" value="{{_id}}" />
+        <input required type="number" min="1" name="duration" placeholder="rent duration in days">
+
+        <input id="submit" type="submit" value="RENT" />
+    </form>
+</div>

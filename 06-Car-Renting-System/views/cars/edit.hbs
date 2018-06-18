@@ -1,0 +1,15 @@
+<h1>Edit a car</h1>
+<form method="post" action="/cars/edit">
+    <input type="hidden" name="id" value="{{id}}">
+
+    <input required type="text" name="model" value="{{model}}" placeholder="model" />
+    <input required type="url" name="imageUrl" value="{{imageUrl}}" placeholder="image url" />
+    <input required type="number" min="1" name="price" value="{{price}}" placeholder="price" />
+
+    <select name="isRented" selected="{{isRented}}">
+        <option value="true" {{#if isRented}} selected {{/if}}>Is Rented</option>
+        <option value="false" {{#if isRented}} {{else}} selected {{/if}}>Is Not Rented</option>
+    </select>
+
+    <input id="submit" type="submit" value="EDIT" />
+</form>

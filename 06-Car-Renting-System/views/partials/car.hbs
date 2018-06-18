@@ -1,0 +1,16 @@
+<div class="car-container">
+    <section>
+        <a href="/cars/edit/{{_id}}">
+            <img src="{{imageUrl}}" alt='car-image' />
+        </a>
+    </section>
+    <section class="info">
+        <strong>{{model}}: ${{price}}</strong>
+        <span class="rented">rented:
+            <strong>{{#if isRented }} yes {{else}} no {{/if}}</strong>
+        </span>
+    </section>
+    <section>
+        <a href="/rents/create/{{_id}}">Rent car</a>
+    </section>
+</div>

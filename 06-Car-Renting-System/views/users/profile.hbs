@@ -1,0 +1,37 @@
+<h1>Profile</h1>
+<section>
+    <h2>Username: {{currentUser.username}}</h2>
+</section>
+<section>
+    <h2>Rent history</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Rent Date</th>
+                <th>Car</th>
+                <th>Price</th>
+                <th>Rent duration, days</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each rents}}
+            <tr>
+                <td>{{date}}</td>
+                <td>{{model}}</td>
+                <td>${{price}}</td>
+                <td>{{duration}}</td>
+                <td>${{total}}</td>
+            </tr>
+            {{else}}
+            <tr>
+                <td colspan="5">
+                    <i>No rent history.
+                        <a href="/cars/all">Rent now</a>
+                    </i>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</section>
